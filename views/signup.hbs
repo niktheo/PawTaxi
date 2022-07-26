@@ -1,0 +1,48 @@
+<div class="bg">
+    <div class="card pt-5 position-absolute top-50 start-50 translate-middle"
+        style="width: 20rem">
+        <form action="/auth/login" method="POST" >
+            <div class="card-body pt-5">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Name</label>
+                    <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input name="email"type="email"class="form-control"aria-describedby="emailHelp"/>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Password</label>
+                    <input name="password" type="password" class="form-control"aria-describedby="emailHelp" />
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Driver</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Customer</label>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Car Plate</label>
+                    <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Car Model</label>
+                    <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" >Car Color</label>
+                    <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+                </div>
+                </div>
+                <button class="btn btn-success mb-3">Sign up</button>
+                <div>
+                    <span>Already have an account?</span>
+                    <a href="/auth">Log in</a>
+                </div>
+            </div>
+        </form>    
+    </div>
+</div>
+
