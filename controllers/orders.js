@@ -8,7 +8,7 @@ const router = express.Router()
 //customer
 //================
 router.get('/create', (req, res) => {
-  res.send('Hello from create')
+  res.render('./create')
 })
 router.post('/', (req, res) => {
   res.send('Hello')
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 //driver
 //================
 router.get('/', (req, res) => {
-  res.send('Hello from driver orders')
+  res.render('./list')
 })
 router.patch('/:id', async (req, res) => {})
 // Export
