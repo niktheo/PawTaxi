@@ -49,8 +49,7 @@ require('./express-sessions')(app)
 // ::::
 app.use('/', require('./controllers/index.js'))
 app.use('/auth', require('./controllers/auth.js'))
-app.use('/customer', require('./controllers/customer.js'))
-app.use('/driver', require('./controllers/driver.js'))
+app.use('/orders', require('./controllers/orders.js'))
 // ::::
 
 // Catch 404 and forward to error handler

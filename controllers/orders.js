@@ -1,36 +1,24 @@
-const mongoose = require('mongoose')
-const ObjectId = mongoose.Schema.Types.ObjectId
+// Packages
+const express = require('express')
+const router = express.Router()
 
-module.exports = mongoose.model('orders', {
-  from: {
-    type: String,
-    required: true
-  },
-  to: {
-    type: String,
-    required: true
-  },
-  customer: {
-    type: ObjectId,
-    ref: 'customers',
-    required: true
-  },
-  type: {
-    type: ObjectId,
-    ref: 'animals',
-    required: true
-  },
-  size: {
-    type: ObjectId,
-    ref: 'animals',
-    required: true
-  },
-  price: {
-    type: Number,
-    required: true
-  },
-  customer: {
-    type: ObjectId,
-    ref: 'drivers'
-  }
+// Views
+// Create here a controller that accepts GET requests and renders the "search" page
+//================
+//customer
+//================
+router.get('/create', (req, res) => {
+  res.send('Hello from create')
 })
+router.post('/', (req, res) => {
+  res.send('Hello')
+})
+//================
+//driver
+//================
+router.get('/', (req, res) => {
+  res.send('Hello from driver orders')
+})
+router.patch('/:id', async (req, res) => {})
+// Export
+module.exports = router
