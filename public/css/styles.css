@@ -1,4 +1,11 @@
 .nav_logo {
-  width: 100px;
-  height: 38px;
+  width: 70px;
+  height: 50px;
+}
+
+.btn-warning {
+  background-color: #f8da5b;
+  color: #247291;
+  font-weight: bold;
+  font-style: oblique;
 }
