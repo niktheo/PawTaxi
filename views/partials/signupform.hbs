@@ -1,8 +1,8 @@
-<form action="/auth/login" method="POST">
+<form action="/auth/signup" method="POST">
     <div class="card-body pt-5">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Name</label>
-            <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+            <input name="name" type="text" class="form-control"aria-describedby="emailHelp" />
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -15,15 +15,15 @@
         {{#if driver}}
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Car Plate</label>
-            <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+            <input name="car_plate" type="text" class="form-control"aria-describedby="emailHelp" />
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Car Model</label>
-            <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+            <input name="car_model" type="text" class="form-control"aria-describedby="emailHelp" />
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Car Color</label>
-            <input name="text" type="text" class="form-control"aria-describedby="emailHelp" />
+            <input name="car_color" type="text" class="form-control"aria-describedby="emailHelp" />
         </div>
         {{/if}}
         <button class="btn btn-success mb-3">Sign up</button>
