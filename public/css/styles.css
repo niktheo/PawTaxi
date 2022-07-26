@@ -1,0 +1,5 @@
+.bg {
+    height: 100vh;
+    background-image: url("/images/logo.png");
+    background-size: cover;
+}
