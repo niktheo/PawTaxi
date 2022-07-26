@@ -18,17 +18,20 @@ module.exports = mongoose.model('users', {
     required: true
   },
   car: {
-    plate: {
-      type: String,
-      required: true
-    },
-    color: {
-      type: String,
-      required: true
-    },
-    model: {
-      type: String,
-      required: true
-    }
+    type: new mongoose.Schema({
+      plate: {
+        type: String,
+        required: true
+      },
+      color: {
+        type: String,
+        required: true
+      },
+      model: {
+        type: String,
+        required: true
+      }
+    }),
+    required: false,
   }
 })
