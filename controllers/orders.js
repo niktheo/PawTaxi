@@ -1,14 +1,14 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-
+const Users = require('../models/users')
 // Views
 // Create here a controller that accepts GET requests and renders the "search" page
 //================
 //customer
 //================
 router.get('/create', (req, res) => {
-  res.render('./create')
+  res.render('./create', { user: req.user })
 })
 router.post('/', (req, res) => {
   res.send('Hello')
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 //driver
 //================
 router.get('/', (req, res) => {
-  res.render('./list')
+  res.render('./list', { user: req.user })
 })
 router.patch('/:id', async (req, res) => {})
 // Export
