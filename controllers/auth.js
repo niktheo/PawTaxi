@@ -51,7 +51,8 @@ router.post('/signup', async (req, res, next) => {
       let userData = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        avatar: req.body.avatar
       }
 
       // check if user signup as driver
