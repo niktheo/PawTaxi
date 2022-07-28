@@ -10,6 +10,12 @@ const Users = require('../models/users')
 router.get('/create', (req, res) => {
   res.render('./create', { user: req.user })
 })
+// router.post('/create', async (req, res, next) => {
+//   try {
+//   } catch (err) {
+//     next(err)
+//   }
+// })
 router.get('/:id', async (req, res) => {
   res.render('./one', { user: req.user })
 })
