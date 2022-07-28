@@ -32,14 +32,13 @@
 				<h6>Choose Paw size:</h6>
 				<!-- Radio buttons trigger modal -->
 				<div class="text-center">
-					<input name="size" class="form-check-input mb-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	  			<label class="form-check-label" for="flexRadioDefault1">
-	    			Small
-	  			</label>
-					<label><input  name="size" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	  			<label class="form-check-label" for="flexRadioDefault1">
-	    			Large
-	  			</label></label>
+					<input name="size" class="form-check-input mb-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  			<label class="form-check-label" for="flexRadioDefault1">Small</label>
+
+					<label>
+						<input  name="size" class="form-check-input" type="radio" value="2" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  					<label class="form-check-label" for="flexRadioDefault1">Large</label>
+					</label>
 				</div>
 
 
@@ -65,7 +64,7 @@
 				<h6 class="card-text">Cost of Ride:</h6>
 
 				<div class="text-center">
-					<a href="#" class="btn btn-warning">Search for PawTaxis</a>
+					<button  type="submit" class="btn btn-warning">Search for PawTaxis</button>
 				</div>
 			</div>
 		</form>
