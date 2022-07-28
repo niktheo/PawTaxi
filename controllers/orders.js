@@ -21,17 +21,28 @@ router.get('/create', (req, res) => {
 router.get('/:id', async (req, res) => {
   res.render('./one', { user: req.user })
 })
-router.post('/', (req, res) => {
-  res.send('Hello')
-})
+//router.post('/', (req, res) => {
+  //res.send('Hello')
+//})
 //================
 //driver
 //================
 router.get('/', async (req, res) => {
   let orders = await Orders.find({}).populate('customer')
-  console.log(orders)
   res.render('./list', { user: req.user, orders})
 })
-router.patch('/:id', async (req, res) => {})
+
+
+router.patch('/:id', async (req, res, next) => {
+  try {
+  console.log(req.user._id)
+    await Orders.findByIdAndUpdate(req.params.id, {
+    driver: req.user._id
+  })
+  res.redirect('/orders')
+  } catch (err) {
+    next (err)
+  }
+})
 // Export
 module.exports = router
