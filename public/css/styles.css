@@ -1,6 +1,6 @@
 .bg {
   height: 100vh;
-  background-image: url('/images/logo.png');
+  background-color: grey;
   background-size: cover;
 }
 .nav_logo {
@@ -27,3 +27,4 @@
 .fa-paw {
   width: 18px;
 }
+
