@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
+const Orders = require('../models/orders')
 // Views
 // Create here a controller that accepts GET requests and renders the "search" page
 //================
@@ -17,7 +18,9 @@ router.get('/create', (req, res) => {
 //   }
 // })
 router.get('/:id', async (req, res) => {
-  res.render('./one', { user: req.user })
+  let customer_order = await Orders.find({})
+  console.log(customer_order[0].from)
+  res.render('./one', { user: req.user, customer_order })
 })
 router.post('/', (req, res) => {
   res.send('Hello')
