@@ -3,22 +3,24 @@
 <!-- REQUESTS -->
 <div class="bg">
     <div class="container pt-3">
-        <span>Welcome back Name, you have X requests</span>
+        <span>Welcome back {{user.name}}, you have X requests</span>
+        {{#each orders as |order|}}
         <div class="card text-center mt-2 mx-auto" style="width: 18rem;">
             <div class="card-body">
                 <div>
-                    <small>Name - Avatar - Animal</small>
+                    <small>{{order.customer.name}} - {{order.customer.avatar}} - {{order.animal.type}}</small>
                 </div>
                 <div>
-                    <small>From: - To: - </small>
+                    <small>{{order.from}}: - {{order.to}}: - </small>
                 </div>
                 <div>
-                    <span> X EURO</span>
+                    <span> {{order.price}}$</span>
                     <span> X km</span>
                     <span> X min</span>
                 </div>
                 <a href="#" class="btn btn-warning">Accept</a>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
