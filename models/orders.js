@@ -12,7 +12,7 @@ module.exports = mongoose.model('orders', {
   },
   customer: {
     type: ObjectId,
-    ref: 'customers',
+    ref: 'users',
     required: true
   },
   type: {
@@ -29,8 +29,8 @@ module.exports = mongoose.model('orders', {
     type: Number,
     required: true
   },
-  customer: {
+  driver: {
     type: ObjectId,
-    ref: 'drivers'
+    ref: 'users'
   }
 })
