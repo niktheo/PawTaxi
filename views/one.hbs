@@ -1,1 +1,36 @@
-{{>nav}}
+{{>nav userData=user}}
+<div class="container">
+	<h3>Paw Trip Details<h3>
+	<div class="card" >
+		<img class="card-img-top" src="../images/map.png" alt="Map">
+		<div class="card-body">
+			<div class="row row-cols-2">
+		    <div class="col">
+		      <h6 class="card-title">Date and Time</h6>
+				</div>
+				<div class="col text-end">
+					<h6 class="card-title ">$Price</h6>
+				</div>
+
+		    <div class="col ">
+		      <h6 class="text-secondary">Car Details</h6>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+	<div class="card mt-2">
+	  <div class="card-body p-2">
+			<div class="container">
+			  <div class="row">
+			    <div class="col-2 mt-1">
+						<img
+								src="{{user.avatar}}"
+								class="rounded-circle img-fluid driver_avatar p-0"
+								alt="avatar login"/>
+						</div>
+			    <div class="col-10 mt-2"><h5>Your Paw Ride with {{user.name}}<h5></div>
+			  </div>
+	  </div>
+	</div>
+</div>

@@ -14,4 +14,17 @@
   font-weight: bold;
   font-style: oblique;
 }
+.avatar {
+  width: 20px;
+}
+
+.driver_avatar {
+  width: 50px;
+}
+.fa-location-dot {
+  width: 18px;
+}
+.fa-paw {
+  width: 18px;
+}
 

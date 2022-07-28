@@ -1,14 +1,28 @@
-{{>nav}}
+{{>nav userData=user}}
 <div class="container">
 <div class="card">
-  <img src="../images/logo.png" class="card-img-top" alt="...">
+  <img src="../images/map.png" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Where Next?</h5>
+    <h5 class="card-title ">Where Next?</h5>
 
-		<form >
+		<form action="/orders/create" method="POST">
+			<div class="form-row ">
+			    <div class="col ">
+						<div class="input-group flex-nowrap">
+						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-house"></i></span>
+						  <input name="from"type="text" class="form-control" placeholder="From:" aria-label="Username" aria-describedby="addon-wrapping">
+						</div>
+			    </div>
+			    <div class="col my-2">
+						<div class="input-group flex-nowrap">
+						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-location-dot"></i></span>
+						  <input name="to" type="text" class="form-control" placeholder="To:" aria-label="Username" aria-describedby="addon-wrapping">
+						</div>
+			    </div>
+			  </div>
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect01"><i class="fa-solid fa-paw"></i></label>
-					<select class="form-select" id="inputGroupSelect01">
+					<select name="type" class="form-select" id="inputGroupSelect01">
 						<option class="text-center"selected>Choose your Paw</option>
 						<option value="1">Dog</option>
 						<option value="2">Cat</option>
@@ -18,14 +32,13 @@
 				<h6>Choose Paw size:</h6>
 				<!-- Radio buttons trigger modal -->
 				<div class="text-center">
-					<input class="form-check-input mb-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	  			<label class="form-check-label" for="flexRadioDefault1">
-	    			Small
-	  			</label>
-					<label><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-	  			<label class="form-check-label" for="flexRadioDefault1">
-	    			Large
-	  			</label></label>
+					<input name="size" class="form-check-input mb-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  			<label class="form-check-label" for="flexRadioDefault1">Small</label>
+
+					<label>
+						<input  name="size" class="form-check-input" type="radio" value="2" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	  					<label class="form-check-label" for="flexRadioDefault1">Large</label>
+					</label>
 				</div>
 
 
@@ -51,7 +64,7 @@
 				<h6 class="card-text">Cost of Ride:</h6>
 
 				<div class="text-center">
-					<a href="#" class="btn btn-warning">Search for PawTaxis</a>
+					<button  type="submit" class="btn btn-warning">Search for PawTaxis</button>
 				</div>
 			</div>
 		</form>
