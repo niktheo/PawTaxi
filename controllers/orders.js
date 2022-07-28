@@ -27,28 +27,35 @@ router.get('/:id', async (req, res) => {
 //================
 //driver
 //================
-router.get('/', async (req, res) => {
-  let orders = await Orders.find({
-    $or:[
-      {
-        driver: req.user._id
-      },
-      {
-        driver: undefined
-      }
-    ]
-  }).populate('customer driver')
-  res.render('./list', { user: req.user, orders})
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.isAuthenticated() && req.user.car) {
+      let orders = await Orders.find({
+        $or:[
+          {
+            driver: req.user._id
+          },
+          {
+            driver: undefined
+          }
+        ]
+      }).populate('customer driver')
+      res.render('./list', { user: req.user, orders})
+    } else {
+      res.redirect('/auth')
+    }
+  } catch (err) {
+    next (err)
+  }
 })
 
 
 router.patch('/:id', async (req, res, next) => {
   try {
-  console.log(req.user._id)
-    await Orders.findByIdAndUpdate(req.params.id, {
-    driver: req.user._id
-  })
-  res.redirect('/orders')
+      await Orders.findByIdAndUpdate(req.params.id, {
+      driver: req.user._id
+    })
+    res.redirect('/orders')
   } catch (err) {
     next (err)
   }
