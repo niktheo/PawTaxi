@@ -28,7 +28,16 @@ router.get('/:id', async (req, res) => {
 //driver
 //================
 router.get('/', async (req, res) => {
-  let orders = await Orders.find({}).populate('customer')
+  let orders = await Orders.find({
+    $or:[
+      {
+        driver: req.user._id
+      },
+      {
+        driver: undefined
+      }
+    ]
+  }).populate('customer driver')
   res.render('./list', { user: req.user, orders})
 })
 
