@@ -18,7 +18,28 @@
                     <span> X km</span>
                     <span> X min</span>
                 </div>
-                <a href="#" class="btn btn-warning">Accept</a>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Accept
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade modal-dialog modal-dialog-centered modal-sm" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order confirmed!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{order.customer.name}} is waiting for you
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
             </div>
         </div>
         {{/each}}
