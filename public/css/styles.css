@@ -1,6 +1,6 @@
 .bg {
   height: 100vh;
-  background-image: url('/images/logo.png');
+  background-color: grey;
   background-size: cover;
 }
 .nav_logo {
@@ -14,3 +14,4 @@
   font-weight: bold;
   font-style: oblique;
 }
+
