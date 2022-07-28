@@ -2,6 +2,8 @@
 const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
+const Orders = require('../models/orders')
+
 // Views
 // Create here a controller that accepts GET requests and renders the "search" page
 //================
@@ -25,8 +27,10 @@ router.post('/', (req, res) => {
 //================
 //driver
 //================
-router.get('/', (req, res) => {
-  res.render('./list', { user: req.user })
+router.get('/', async (req, res) => {
+  let orders = await Orders.find({}).populate('customer')
+  console.log(orders)
+  res.render('./list', { user: req.user, orders})
 })
 router.patch('/:id', async (req, res) => {})
 // Export
