@@ -18,9 +18,9 @@ router.get('/create', (req, res) => {
 //   }
 // })
 router.get('/:id', async (req, res) => {
-  let customer_order = await Orders.find({})
-  console.log(customer_order[0].from)
-  res.render('./one', { user: req.user, customer_order })
+  let orders = await Orders.find({})
+  console.log(orders)
+  res.render('./one', { user: req.user, orders })
 })
 router.post('/', (req, res) => {
   res.send('Hello')
