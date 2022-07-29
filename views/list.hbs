@@ -3,22 +3,52 @@
 <!-- REQUESTS -->
 <div class="bg">
     <div class="container pt-3">
-        <span>Welcome back Name, you have X requests</span>
+        <span>Welcome back {{user.name}}</span>
+        {{#each orders as |order|}}
         <div class="card text-center mt-2 mx-auto" style="width: 18rem;">
             <div class="card-body">
                 <div>
-                    <small>Name - Avatar - Animal</small>
+                    <small>{{order.customer.name}} - {{order.customer.avatar}} - {{order.animal.type}}
+                        {{#if order.driver}}
+                        <span class="badge bg-success position-absolute top-0 start-100 translate-middle p-2">Accepted</span>
+                        {{/if}}
+                    </small>
                 </div>
                 <div>
-                    <small>From: - To: - </small>
+                    <small>{{order.from}}: - {{order.to}}: - </small>
                 </div>
                 <div>
-                    <span> X EURO</span>
+                    <span> {{order.price}}$</span>
                     <span> X km</span>
                     <span> X min</span>
                 </div>
-                <a href="#" class="btn btn-warning">Accept</a>
+            </div>
+            <!-- Button trigger modal -->
+            {{#unless order.driver}}
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmation-modal-{{order._id}}">
+            Accept
+            </button>
+            {{/unless}}
+        </div>
+        <!-- Modal -->
+        {{#unless order.driver}}
+        <div class="modal fade modal-sm" id="confirmation-modal-{{order._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Do you want to confirm?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/orders/{{order.id}}?_method=PATCH" method="POST">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Confirm</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+        {{/unless}}
+        {{/each}}
     </div>
 </div>
+
