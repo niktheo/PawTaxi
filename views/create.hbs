@@ -17,17 +17,18 @@
 			<div class="form-row ">
 			    <div class="col ">
 						<div class="input-group flex-nowrap">
-						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-house"></i></span>
-						  <input name="from"type="text" class="form-control" placeholder="From:" aria-label="Username" aria-describedby="addon-wrapping">
+						  <span for="from" class="input-group-text" ><i class="fa-solid fa-house"></i></span>
+						  <input id="from" type="text" class="form-control" placeholder="From:" >
 						</div>
 			    </div>
 			    <div class="col my-2">
 						<div class="input-group flex-nowrap">
-						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-location-dot"></i></span>
-						  <input name="to" type="text" class="form-control" placeholder="To:" aria-label="Username" aria-describedby="addon-wrapping">
+						  <span for="to" class="input-group-text" ><i class="fa-solid fa-location-dot"></i></span>
+						  <input id="to"  type="text" class="form-control" placeholder="To:" >
 						</div>
 			    </div>
 			  </div>
+
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect01"><i class="fa-solid fa-paw"></i></label>
 					<select name="type" class="form-select" id="inputGroupSelect01">
@@ -76,5 +77,8 @@
 				</div>
 			</div>
 		</form>
+		<div class="col-xs-offset-2 col-xs-10">
+				<button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i></button>
+		</div>
 	</div>
 </div>
