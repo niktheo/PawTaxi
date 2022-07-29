@@ -26,6 +26,30 @@ function calcRoute() {
     travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
     unitSystem: google.maps.UnitSystem.METRIC
   }
+
+  //pass the request to the route method
+  directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      //Get distance and time
+      const output = document.querySelector('#output')
+      output.innerHTML =
+        '<div class=\'alert-info\'>From: ' +
+        document.getElementById('from').value +
+        '.<br />To: ' +
+        document.getElementById('to').value +
+        '.<br /> Driving distance <i class=\'fas fa-road\'></i> : ' +
+        result.routes[0].legs[0].distance.text +
+        '.<br />Duration <i class=\'fas fa-hourglass-start\'></i> : ' +
+        result.routes[0].legs[0].duration.text +
+        '.</div>'
+      // const price = document.querySelector('#price')
+      // price.innerHTML =
+      //   '<div class=\'alert-info\'>Price: ' +
+      //   result.routes[0].legs[0].distance.text +
+      //   '.</div>'
+
+      //display route
+      directionsDisplay.setDirections(result)
     } else {
     }
   })
