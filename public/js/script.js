@@ -49,7 +49,7 @@ function calcRoute() {
         '<div class=\'row\'>' +
         '<div class=\'col\'>' +
         '<i class=\'fa-solid fa-sack-dollar\'></i>  ' +
-        Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) /
+        Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 100) /
           100 +
         ' $' +
         '</div>' +
