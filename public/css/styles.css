@@ -31,11 +31,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.fa-map-marker-alt,
-.fa-dot-circle {
-  color: #5bc0de;
-}
-
 /*map*/
 #googleMap {
   width: 100%;
