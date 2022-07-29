@@ -28,12 +28,23 @@
   width: 18px;
 }
 
-#map {
-  height: 100vh;
+.bd {
+  color: #5bc0de;
+  font-family: 'Poppins', sans-serif;
 }
 
-.custom-map-control-button {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid grey;
+.fa-map-marker-alt,
+.fa-dot-circle {
+  color: #5bc0de;
+}
+
+/*map*/
+#googleMap {
+  width: 100%;
+  height: 400px;
+  margin: 10px auto;
+}
+
+#mode {
+  color: black;
 }
