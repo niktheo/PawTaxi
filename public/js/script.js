@@ -45,20 +45,28 @@ function calcRoute() {
 
       const output = document.querySelector('#output')
       output.innerHTML =
-        '<div class=\'alert-info\'>From: ' +
-        document.getElementById('from').value +
-        '.<br />To: ' +
-        document.getElementById('to').value +
-        '.<br /> Driving distance <i class=\'fas fa-road\'></i> : ' +
-        result.routes[0].legs[0].distance.text +
-        '.<br />Duration <i class=\'fas fa-hourglass-start\'></i> : ' +
+        '<div class="container text-center"> ' +
+        '<div class=\'row\'>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fa-solid fa-sack-dollar\'></i>  ' +
+        Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) /
+          100 +
+        ' $' +
+        '</div>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fa-solid fa-clock\'></i>  ' +
         result.routes[0].legs[0].duration.text +
-        '.</div>'
-      // const price = document.querySelector('#price')
-      // price.innerHTML =
-      //   '<div class=\'alert-info\'>Price: ' +
-      //   result.routes[0].legs[0].distance.text +
-      //   '.</div>'
+        '</div>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fas fa-road\'></i>  ' +
+        result.routes[0].legs[0].distance.text
+      ;('</div>')
+      ;('.</div>')
+      ;('</div>')
+      //   '<div>Price: ' +
+      //   Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) / 10 +
+      //   '$'
+      // ;('.</div>')
 
       //display route
       directionsDisplay.setDirections(result)
