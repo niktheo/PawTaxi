@@ -42,7 +42,7 @@ router.get('/', async (req, res, next) => {
           }
         ]
       }).populate('customer driver')
-      res.render('./list', { user: req.user, orders })
+      res.render('list', { user: req.user, orders })
     } else {
       res.redirect('/auth')
     }
