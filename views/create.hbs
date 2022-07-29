@@ -1,10 +1,17 @@
 {{>nav userData=user}}
 <div class="container">
 <div class="card">
-	<div id="map"></div>
-  <!-- <img src="../images/map.png" class="card-img-top" alt="..."> -->
-  <div class="card-body">
-    <h5 class="card-title ">Where Next?</h5>
+  <div class="card-body p-0">
+<!-- Map Display -->
+		<div class="container-fluid p-0">
+				<div id="googleMap" class="my-0">
+
+				</div>
+				<div id="output">
+
+				</div>
+		</div>
+		<h5 class="card-title mt-2 ">Where Next?</h5>
 
 		<form action="/orders/create" method="POST">
 			<div class="form-row ">
