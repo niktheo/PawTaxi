@@ -84,5 +84,19 @@ router.post('/signup', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-}) // Export
+})
+
+router.get('/logout', (req, res, next) => {
+  req.logout()
+  req.session.destroy(err => {
+    if (err) {
+      next(err)
+    }
+    res.clearCookie('connect.sid')
+    res.redirect('/auth')
+  })
+})
+
+
+// Export
 module.exports = router
