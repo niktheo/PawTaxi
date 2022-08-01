@@ -15,14 +15,12 @@ module.exports = mongoose.model('orders', {
     ref: 'users',
     required: true
   },
-  type: {
-    type: ObjectId,
-    ref: 'animals',
+  animal: {
+    type: String,
     required: true
   },
   size: {
-    type: ObjectId,
-    ref: 'animals',
+    type: String,
     required: true
   },
   price: {
@@ -30,7 +28,7 @@ module.exports = mongoose.model('orders', {
     required: true
   },
   duration: {
-    type: Number,
+    type: String,
     required: true
   },
   driver: {
