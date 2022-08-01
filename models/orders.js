@@ -29,6 +29,10 @@ module.exports = mongoose.model('orders', {
     type: Number,
     required: true
   },
+  duration: {
+    type: Number,
+    required: true
+  },
   driver: {
     type: ObjectId,
     ref: 'users'
