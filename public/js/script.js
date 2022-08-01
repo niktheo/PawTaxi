@@ -52,6 +52,34 @@ function calcRoute() {
       ;('</div>')
       ;('.</div>')
       ;('</div>')
+
+      const duration = document.querySelector('#duration')
+      duration.value = result.routes[0].legs[0].duration.text
+
+      const price = document.querySelector('#price')
+      price.value =
+        Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 100) / 100
+
+      //   '<div>Price: ' +
+      //   Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) / 10 +
+      //   '$'
+      // ;('.</div>')
+
+      //display route
+      directionsDisplay.setDirections(result)
+    } else {
+      //delete route from map
+      directionsDisplay.setDirections({ routes: [] })
+      //center map in London
+      map.setCenter(myLatLng)
+
+      //show error message
+      output.innerHTML =
+        '<div class=\'alert-danger\'><i class=\'fas fa-exclamation-triangle\'></i> Could not retrieve driving distance.</div>'
+    }
+  })
+}
+
       //   '<div>Price: ' +
       //   Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) / 10 +
       //   '$'
