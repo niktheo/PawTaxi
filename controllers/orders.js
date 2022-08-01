@@ -19,10 +19,12 @@ router.get('/create', (req, res) => {
 //   }
 // })
 router.get('/:id', async (req, res) => {
-  res.render('./one', { user: req.user })
+  let orders = await Orders.find({})
+  console.log(orders)
+  res.render('./one', { user: req.user, orders })
 })
 //router.post('/', (req, res) => {
-  //res.send('Hello')
+//res.send('Hello')
 //})
 //================
 //driver
@@ -31,7 +33,7 @@ router.get('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated() && req.user.car) {
       let orders = await Orders.find({
-        $or:[
+        $or: [
           {
             driver: req.user._id
           },
@@ -40,24 +42,23 @@ router.get('/', async (req, res, next) => {
           }
         ]
       }).populate('customer driver')
-      res.render('./list', { user: req.user, orders})
+      res.render('list', { user: req.user, orders })
     } else {
       res.redirect('/auth')
     }
   } catch (err) {
-    next (err)
+    next(err)
   }
 })
 
-
 router.patch('/:id', async (req, res, next) => {
   try {
-      await Orders.findByIdAndUpdate(req.params.id, {
+    await Orders.findByIdAndUpdate(req.params.id, {
       driver: req.user._id
     })
     res.redirect('/orders')
   } catch (err) {
-    next (err)
+    next(err)
   }
 })
 // Export

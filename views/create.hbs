@@ -1,25 +1,31 @@
 {{>nav userData=user}}
 <div class="container">
 <div class="card">
-  <img src="../images/map.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title ">Where Next?</h5>
+  <div class="card-body p-0">
+<!-- Map Display -->
+		<div class="container-fluid p-0">
+				<div id="googleMap" class="my-0">
+
+				</div>
+		</div>
+		<h5 class="card-title mt-2 ">Where Next?</h5>
 
 		<form action="/orders/create" method="POST">
 			<div class="form-row ">
 			    <div class="col ">
 						<div class="input-group flex-nowrap">
-						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-house"></i></span>
-						  <input name="from"type="text" class="form-control" placeholder="From:" aria-label="Username" aria-describedby="addon-wrapping">
+						  <span for="from" class="input-group-text" ><i class="fa-solid fa-house"></i></span>
+						  <input  id="from" type="text" class="form-control" placeholder="From:" >
 						</div>
 			    </div>
 			    <div class="col my-2">
 						<div class="input-group flex-nowrap">
-						  <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-location-dot"></i></span>
-						  <input name="to" type="text" class="form-control" placeholder="To:" aria-label="Username" aria-describedby="addon-wrapping">
+						  <span for="to" class="input-group-text" ><i class="fa-solid fa-location-dot"></i></span>
+						  <input id="to"  type="text" class="form-control" placeholder="To:" >
 						</div>
 			    </div>
 			  </div>
+
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect01"><i class="fa-solid fa-paw"></i></label>
 					<select name="type" class="form-select" id="inputGroupSelect01">
@@ -32,11 +38,11 @@
 				<h6>Choose Paw size:</h6>
 				<!-- Radio buttons trigger modal -->
 				<div class="text-center">
-					<input name="size" class="form-check-input mb-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<input onclick="calcRoute();" name="size" class="form-check-input mb-2" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
 	  			<label class="form-check-label" for="flexRadioDefault1">Small</label>
 
 					<label>
-						<input  name="size" class="form-check-input" type="radio" value="2" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						<input  onclick="calcRoute();" name="size" class="form-check-input" type="radio" value="2" name="flexRadioDefault" id="flexRadioDefault1" data-bs-toggle="modal" data-bs-target="#exampleModal">
 	  					<label class="form-check-label" for="flexRadioDefault1">Large</label>
 					</label>
 				</div>
@@ -61,12 +67,14 @@
 				</div>
 
 
-				<h6 class="card-text">Cost of Ride:</h6>
+				<h6 id="output"class="card-text"></h6>
+				<!-- <div id="output"class="hidden" name='price'></div> -->
 
 				<div class="text-center">
 					<button  type="submit" class="btn btn-warning">Search for PawTaxis</button>
 				</div>
 			</div>
 		</form>
+
 	</div>
 </div>
