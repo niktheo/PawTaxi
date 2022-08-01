@@ -23,9 +23,11 @@ router.get('/:id', async (req, res) => {
   console.log(orders)
   res.render('./one', { user: req.user, orders })
 })
-//router.post('/', (req, res) => {
-//res.send('Hello')
-//})
+router.post('/', (req, res, next) => {
+  try {
+    console.log(req.body)
+  } catch (e) {}
+})
 //================
 //driver
 //================
