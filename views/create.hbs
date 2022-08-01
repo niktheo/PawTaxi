@@ -10,18 +10,18 @@
 		</div>
 		<h5 class="card-title mt-2 ">Where Next?</h5>
 
-		<form action="/orders/create" method="POST">
+		<form action="/orders" method="POST">
 			<div class="form-row ">
 			    <div class="col ">
 						<div class="input-group flex-nowrap">
 						  <span for="from" class="input-group-text" ><i class="fa-solid fa-house"></i></span>
-						  <input  id="from" type="text" class="form-control" placeholder="From:" >
+						  <input  name="from"id="from" type="text" class="form-control" placeholder="From:" >
 						</div>
 			    </div>
 			    <div class="col my-2">
 						<div class="input-group flex-nowrap">
 						  <span for="to" class="input-group-text" ><i class="fa-solid fa-location-dot"></i></span>
-						  <input id="to"  type="text" class="form-control" placeholder="To:" >
+						  <input id="to" name="to"  type="text" class="form-control" placeholder="To:" >
 						</div>
 			    </div>
 			  </div>
@@ -30,9 +30,9 @@
 					<label class="input-group-text" for="inputGroupSelect01"><i class="fa-solid fa-paw"></i></label>
 					<select name="type" class="form-select" id="inputGroupSelect01">
 						<option class="text-center"selected>Choose your Paw</option>
-						<option value="1">Dog</option>
-						<option value="2">Cat</option>
-						<option value="3">Rabbit</option>
+						<option value="Dog">Dog</option>
+						<option value="Cat">Cat</option>
+						<option value="Rabbit">Rabbit</option>
 					</select>
 				</div>
 				<h6>Choose Paw size:</h6>
