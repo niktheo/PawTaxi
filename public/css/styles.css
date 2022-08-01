@@ -1,5 +1,7 @@
 .bg {
   height: 100vh;
+  background-color: black;
+  background-size: cover;
 }
 .nav_logo {
   width: 70px;
@@ -25,7 +27,19 @@
 .fa-paw {
   width: 18px;
 }
+.logo_signup {
+  width: 100px;
+  height: 60px;
+  display: block;
+}
 
+.bg2 {
+  height: 100vh;
+}
+
+.pic {
+  height: 60vh;
+}
 .bd {
   color: #5bc0de;
   font-family: 'Poppins', sans-serif;

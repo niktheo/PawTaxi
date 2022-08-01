@@ -1,9 +1,13 @@
 
 <div class="bg">
-    <div class="card pt-5 position-absolute top-50 start-50 translate-middle"
+    <img class="pic" src="https://images.unsplash.com/photo-1559753367-975b82446c81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGRvZyUyMGluJTIwY2FyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60">
+    <div class="card position-absolute top-50 start-50 translate-middle"
         style="width: 20rem">
         <form action="/auth/login" method="POST" >
-            <div class="card-body pt-5">
+            <div class="card-body">
+                <div>
+                    <img class="logo_signup mx-auto" src="/images/nav_logo.png" />
+                </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input name="email"type="email"class="form-control"aria-describedby="emailHelp"/>
@@ -12,12 +16,13 @@
                     <label for="exampleInputEmail1" class="form-label" >Password</label>
                     <input name="password" type="password" class="form-control"aria-describedby="emailHelp" />
                 </div>
-                <button class="btn btn-success mb-3">Login</button>
+                <button class="btn btn-warning mb-3">Login</button>
                 <div>
                 <span>New to PawTaxi?</span>
                 <a href="/auth/signup">Sign Up</a>
                 </div>
             </div>
         </form>
+        </div>
     </div>
 </div>
