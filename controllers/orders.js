@@ -23,10 +23,15 @@ router.get('/:id', async (req, res) => {
   console.log(orders)
   res.render('./one', { user: req.user, orders })
 })
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body)
-  } catch (e) {}
+    if (req.isAuthenticated()) {
+      req.body.customer = req.user._id
+      let order = await Orders.create(req.body)
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 //================
 //driver
