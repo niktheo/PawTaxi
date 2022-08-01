@@ -80,6 +80,49 @@ function calcRoute() {
   })
 }
 
+//define calcRoute function
+function calcRouteLarge() {
+  //create request
+  var request = {
+    origin: document.getElementById('from').value,
+    destination: document.getElementById('to').value,
+    travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
+    unitSystem: google.maps.UnitSystem.METRIC
+  }
+
+  //pass the request to the route method
+  directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      //Get distance and time
+
+      const output = document.querySelector('#output')
+      output.innerHTML =
+        '<div class="container text-center"> ' +
+        '<div class=\'row\'>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fa-solid fa-sack-dollar\'></i>  ' +
+        Math.round(result.routes[0].legs[0].distance.value * 0.0017 * 100) /
+          100 +
+        ' $' +
+        '</div>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fa-solid fa-clock\'></i>  ' +
+        result.routes[0].legs[0].duration.text +
+        '</div>' +
+        '<div class=\'col\'>' +
+        '<i class=\'fas fa-road\'></i>  ' +
+        result.routes[0].legs[0].distance.text
+      ;('</div>')
+      ;('.</div>')
+      ;('</div>')
+
+      const duration = document.querySelector('#duration')
+      duration.value = result.routes[0].legs[0].duration.text
+
+      const price = document.querySelector('#price')
+      price.value =
+        Math.round(result.routes[0].legs[0].distance.value * 0.0017 * 100) / 100
+
       //   '<div>Price: ' +
       //   Math.round(result.routes[0].legs[0].distance.value * 0.0015 * 10) / 10 +
       //   '$'
