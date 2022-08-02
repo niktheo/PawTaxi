@@ -4,6 +4,7 @@ const router = express.Router()
 const Users = require('../models/users')
 const Orders = require('../models/orders')
 
+const moment = require('moment')
 // Views
 // Create here a controller that accepts GET requests and renders the "search" page
 //================
@@ -19,9 +20,18 @@ router.get('/create', (req, res) => {
 //   }
 // })
 router.get('/:id', async (req, res) => {
-  let orders = await Orders.find({})
-  console.log(orders)
-  res.render('./one', { user: req.user, orders })
+  let order = await Orders.findById(req.params.id).lean()
+  let time = order.date
+  console.log(time)
+  let dateFormat = 'YYYY-DD-MM HH:mm:ss'
+  let testDateUtc = moment.utc(`${time}`)
+  let localDate = moment(testDateUtc).local()
+  let finalDate = localDate.format(dateFormat)
+
+  order.date = finalDate
+  console.log(finalDate)
+  console.log(order)
+  res.render('./one', { user: req.user, order })
 })
 router.post('/', async (req, res, next) => {
   try {
