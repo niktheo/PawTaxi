@@ -27,14 +27,11 @@ router.get('/:id', async (req, res) => {
     .populate('customer driver')
   let time = order.date
   console.log(time)
-  let dateFormat = 'YYYY-DD-MM HH:mm:ss'
-  let testDateUtc = moment.utc(`${time}`)
-  let localDate = moment(testDateUtc).local()
-  let finalDate = localDate.format(dateFormat)
-
+  let finalDate = moment.utc(`${time}`).format('lll')
+  //console.log(finalDate)
   order.date = finalDate
-  console.log(finalDate)
-  console.log(order)
+  console.log(order.date)
+  // console.log(order)
   res.render('./one', { user: req.user, order })
 })
 
