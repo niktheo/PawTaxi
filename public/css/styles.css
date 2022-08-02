@@ -4,8 +4,8 @@
   background-size: cover;
 }
 .nav_logo {
-  width: 70px;
-  height: 50px;
+  width: 100px;
+  height: 60px;
 }
 
 .btn-warning {
@@ -54,4 +54,18 @@
 
 #mode {
   color: black;
+}
+
+.bg-orders {
+  background-size: 100% auto;
+  background-color;
+}
+
+.foot-logo {
+  width: 100px;
+  height: 60px;
+}
+
+.av {
+  width: 40px;
 }

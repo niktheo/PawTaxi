@@ -1,37 +1,51 @@
 {{>nav userData=user}}
 
 <!-- REQUESTS -->
-<div class="bg">
-    <div class="container pt-3">
-        <span>Welcome back {{user.name}}</span>
+<div class="bg-orders">
+    <div class="container py-3">
+        <h1>Welcome back {{user.name}}</h1>
         {{#each orders as |order|}}
-        <div class="card text-center mt-2 mx-auto" style="width: 18rem;">
+        <div class="card text-center my-2 mx-auto" style="width: 18rem;">
             <div class="card-body">
+                <div class="container text-center">
+                    <div>
+                        <div>
+                            <label>
+                            <img
+                                src="{{order.customer.avatar}}"
+                                class=" av rounded-circle img-fluid driver_avatar p-0"
+                                alt="avatar login"/>
+                            </label>
+                        </div>
+                         <div>
+                            <span>{{order.customer.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <small>
+                    {{#if order.driver}}
+                    <span class="badge bg-success position-absolute top-0 start-100 translate-middle p-2">Accepted</span>
+                    {{/if}}
+                </small>
+            </div>
+            <div>
+                <small>{{order.from}} to {{order.to}}</small>
+            </div>
+            <div>
+                <h3>{{order.price}}$</h3>
                 <div>
-                    <small>{{order.customer.name}} - {{order.customer.avatar}} - {{order.animal.type}}
-                        {{#if order.driver}}
-                        <span class="badge bg-success position-absolute top-0 start-100 translate-middle p-2">Accepted</span>
-                        {{/if}}
-                    </small>
+                    <span>{{order.duration}}</span>
                 </div>
                 <div>
-                    <small>{{order.from}}: - {{order.to}}: - </small>
-                </div>
-                <div>
-                    <span> {{order.price}}$</span>
-                    <span> X km</span>
-                    <span> X min</span>
+                    <span>{{order.date}}</span>
                 </div>
             </div>
-            <!-- Button trigger modal -->
-            {{#unless order.driver}}
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmation-modal-{{order._id}}">
-            Accept
-            </button>
-            {{/unless}}
-        </div>
-        <!-- Modal -->
+        <!-- Button trigger modal -->
         {{#unless order.driver}}
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmation-modal-{{order._id}}">
+        Accept
+        </button>
+        <!-- Modal -->
         <div class="modal fade modal-sm" id="confirmation-modal-{{order._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -48,7 +62,14 @@
             </div>
         </div>
         {{/unless}}
+        </div>
         {{/each}}
     </div>
 </div>
 
+{{>foot}}
+
+{{!-- <script type="text/javascript">
+setTimeout(() => { location.reload() }, 5000);
+
+</script> --}}
