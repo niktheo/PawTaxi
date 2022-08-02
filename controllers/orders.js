@@ -24,15 +24,15 @@ router.get('/create', (req, res) => {
 router.get('/:id', async (req, res) => {
   let order = await Orders.findById(req.params.id).lean()
   let time = order.date
-  console.log(time)
+  //console.log(time)
   let dateFormat = 'YYYY-DD-MM HH:mm:ss'
   let testDateUtc = moment.utc(`${time}`)
   let localDate = moment(testDateUtc).local()
   let finalDate = localDate.format(dateFormat)
 
   order.date = finalDate
-  console.log(finalDate)
-  console.log(order)
+  //console.log(finalDate)
+  //console.log(order)
   res.render('./one', { user: req.user, order })
 })
 
@@ -62,7 +62,7 @@ router.get('/', async (req, res, next) => {
             driver: undefined
           }
         ]
-      }).populate('customer driver')
+      }).populate('customer driver')  
       res.render('list', { user: req.user, orders })
     } else {
       res.redirect('/auth')
