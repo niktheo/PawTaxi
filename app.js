@@ -18,6 +18,9 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 app.set('view options', { layout: 'layouts/main' })
+hbs.registerHelper('googleMapsApiKey', () => {
+  return process.env.GOOGLE_MAPS_API_KEY
+})
 hbs.registerPartials(__dirname + '/views/partials', err => {})
 hbsUtils.registerWatchedPartials(__dirname + '/views/partials')
 require('./hbs-helpers')
