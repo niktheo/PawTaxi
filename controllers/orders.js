@@ -10,7 +10,10 @@ const moment = require('moment')
 //customer
 //================
 router.get('/create', (req, res) => {
-  res.render('./create', { user: req.user })
+  res.render('./create', {
+    user: req.user,
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
+  })
 })
 // router.post('/create', async (req, res, next) => {
 //   try {
