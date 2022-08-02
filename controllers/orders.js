@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
 const Orders = require('../models/orders')
-
 const moment = require('moment')
 // Views
 // Create here a controller that accepts GET requests and renders the "search" page
@@ -33,11 +32,13 @@ router.get('/:id', async (req, res) => {
   console.log(order)
   res.render('./one', { user: req.user, order })
 })
+
 router.post('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       req.body.customer = req.user._id
       let order = await Orders.create(req.body)
+      res.redirect(`/orders/${order._id}`)
     }
   } catch (err) {
     next(err)
