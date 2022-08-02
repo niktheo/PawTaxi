@@ -22,7 +22,9 @@ router.get('/create', (req, res) => {
 //   }
 // })
 router.get('/:id', async (req, res) => {
-  let order = await Orders.findById(req.params.id).lean()
+  let order = await Orders.findById(req.params.id)
+    .lean()
+    .populate('customer driver')
   let time = order.date
   console.log(time)
   let dateFormat = 'YYYY-DD-MM HH:mm:ss'
