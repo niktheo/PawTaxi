@@ -34,5 +34,10 @@ module.exports = mongoose.model('orders', {
   driver: {
     type: ObjectId,
     ref: 'users'
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true
   }
 })
