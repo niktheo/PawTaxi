@@ -1,0 +1,60 @@
+        <div class="card text-center my-5 mx-auto" style="width: 18rem;">
+            <div class="card-body">
+                <div class="container text-center">
+                    <div>
+                        <div>
+                            <label>
+                            <img
+                                src="{{order.customer.avatar}}"
+                                class=" av rounded-circle img-fluid driver_avatar p-0"
+                                alt="avatar login"/>
+                            </label>
+                        </div>
+                         <div>
+                            <span>{{order.customer.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <small>
+                    {{#if order.driver}}
+                    <span class="badge bg-success position-absolute top-0 start-100 translate-middle p-2">Accepted</span>
+                    {{/if}}
+                </small>
+            </div>
+            <hr>
+            <div>
+                <small>{{order.from}} to {{order.to}}</small>
+            </div>
+            <div>
+                <span>{{order.duration}}</span>
+            </div>
+            <div>
+                <span>{{order.date}}</span>
+            </div>
+            <hr>
+            <div>
+                <h3>{{order.price}}$</h3>
+            </div>
+        <!-- Button trigger modal -->
+        {{#unless order.driver}}
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmation-modal-{{order._id}}">
+        Accept
+        </button>
+        <!-- Modal -->
+        <div class="modal fade modal-sm" id="confirmation-modal-{{order._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Do you want to confirm?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/orders/{{order.id}}?_method=PATCH" method="POST">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/unless}}
+        </div>
