@@ -52,17 +52,13 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated() && req.user.car) {
-      let orders = await Orders.find({
-        $or: [
-          {
-            driver: req.user._id
-          },
-          {
-            driver: undefined
-          }
-        ]
-      }).populate('customer driver')  
-      res.render('list', { user: req.user, orders })
+      let openOrders = await Orders.find({
+        driver: undefined
+      }).populate('customer').sort('-date')
+      let acceptedOrders = await Orders.find({
+        driver: req.user._id
+      }).populate('customer driver').sort('-date')
+      res.render('list', { user: req.user, openOrders, acceptedOrders })
     } else {
       res.redirect('/auth')
     }
