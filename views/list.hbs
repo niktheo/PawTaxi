@@ -1,5 +1,5 @@
 {{>nav userData=user}}
-
+<hr>
 <!-- REQUESTS -->
 <div class="bg-orders">
     <div class="container py-3">
@@ -8,6 +8,7 @@
         {{#each openOrders as |order|}}
             {{>order order=order}}
         {{/each}}
+        <hr>
         <h3>Accepted Orders</h3>
         {{#each acceptedOrders as |order|}}
             {{>order order=order}}
