@@ -38,3 +38,17 @@ function initialize() {
     }
   })
 }
+google.maps.event.addDomListener(window, 'load', initialize)
+// Adds a marker to the map.
+function createMarker(location, label, content, map, infowindow) {
+  var marker = new google.maps.Marker({
+    position: location,
+    label: label,
+    title: label,
+    map: map
+  })
+  marker.addListener('click', function(e) {
+    infowindow.setContent(content)
+    infowindow.open(map, this)
+  })
+}
