@@ -1,3 +1,29 @@
+var map = new google.maps.Map(document.getElementById('googleMap'), {
+  center: { lat: -34.397, lng: 150.644 },
+  zoom: 12
+})
+var infoWindow = new google.maps.InfoWindow({ map: map })
+
+// Try HTML5 geolocation.
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+
+      infoWindow.setPosition(pos)
+      infoWindow.setContent('Current Location')
+      map.setCenter(pos)
+    },
+    function() {
+      handleLocationError(true, infoWindow, map.getCenter())
+    }
+  )
+} else {
+  // Browser doesn't support Geolocation
+  handleLocationError(false, infoWindow, map.getCenter())
 }
 
 //create a DirectionsService object to use the route method and get a result for our request
