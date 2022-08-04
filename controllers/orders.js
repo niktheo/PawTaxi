@@ -15,12 +15,7 @@ router.get('/create', (req, res) => {
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
   })
 })
-// router.post('/create', async (req, res, next) => {
-//   try {
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+
 router.get('/:id', async (req, res) => {
   let order = await Orders.findById(req.params.id)
     .populate('customer driver')
@@ -28,10 +23,7 @@ router.get('/:id', async (req, res) => {
   let time = order.date
   console.log(time)
   let finalDate = moment.utc(`${time}`).format('lll')
-  //console.log(finalDate)
   order.date = finalDate
-  //console.log(order.date)
-  // console.log(order)
   res.render('./one', { user: req.user, order })
 })
 
@@ -65,16 +57,12 @@ router.get('/', async (req, res, next) => {
 
       openOrders.forEach((elem, i) => {
         finalDate = moment.utc(`${elem.date}`).format('lll')
-        //console.log(finalDate)
         elem.date = finalDate
-        //console.log(elem.date)
       })
 
       acceptedOrders.forEach((elem, i) => {
         finalDate = moment.utc(`${elem.date}`).format('lll')
-        //console.log(finalDate)
         elem.date = finalDate
-        //console.log(elem.date)
       })
 
       res.render('list', { user: req.user, openOrders, acceptedOrders })
