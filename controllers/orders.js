@@ -49,11 +49,7 @@ router.get('/', async (req, res, next) => {
       })
         .populate('customer')
         .sort('-date')
-      let acceptedOrders = await Orders.find({
-        driver: req.user._id
-      })
-        .populate('customer driver')
-        .sort('-date')
+        .lean()
 
       openOrders.forEach((elem, i) => {
         finalDate = moment.utc(`${elem.date}`).format('lll')
