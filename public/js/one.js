@@ -17,8 +17,24 @@ function initialize() {
     travelMode: 'DRIVING'
   }
 
-//create map
-var map = new google.maps.Map(
-  document.getElementById('googleMapRoute'),
-  mapOptions
-)
+  directionsService.route(request, function(result, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(result)
+      createMarker(
+        result.routes[0].legs[0].start_location,
+        'A',
+        'start marker',
+        map,
+        infowindow
+      )
+      var lastLeg = result.routes[0].legs.length - 1
+      createMarker(
+        result.routes[0].legs[lastLeg].end_location,
+        'B',
+        'end marker',
+        map,
+        infowindow
+      )
+    }
+  })
+}
