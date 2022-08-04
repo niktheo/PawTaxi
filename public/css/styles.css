@@ -79,3 +79,8 @@
 .smbadge {
   font-size: 16px;
 }
+
+#output {
+  font-size: 18px;
+  font-weight: bold;
+}
