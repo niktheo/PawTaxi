@@ -15,23 +15,15 @@ router.get('/create', (req, res) => {
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
   })
 })
-// router.post('/create', async (req, res, next) => {
-//   try {
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+
 router.get('/:id', async (req, res) => {
   let order = await Orders.findById(req.params.id)
-    .lean()
     .populate('customer driver')
+    .lean()
   let time = order.date
   console.log(time)
   let finalDate = moment.utc(`${time}`).format('lll')
-  //console.log(finalDate)
   order.date = finalDate
-  console.log(order.date)
-  // console.log(order)
   res.render('./one', { user: req.user, order })
 })
 
@@ -54,10 +46,29 @@ router.get('/', async (req, res, next) => {
     if (req.isAuthenticated() && req.user.car) {
       let openOrders = await Orders.find({
         driver: undefined
-      }).populate('customer').sort('-date')
+      })
+        .populate('customer')
+        .sort('-date')
+        .lean()
+
+      openOrders.forEach((elem, i) => {
+        finalDate = moment.utc(`${elem.date}`).format('lll')
+        elem.date = finalDate
+      })
+
+      console.log(openOrders)
       let acceptedOrders = await Orders.find({
         driver: req.user._id
-      }).populate('customer driver').sort('-date')
+      })
+        .populate('customer driver')
+        .sort('-date')
+        .lean()
+
+      acceptedOrders.forEach((elem, i) => {
+        finalDate = moment.utc(`${elem.date}`).format('lll')
+        elem.date = finalDate
+      })
+
       res.render('list', { user: req.user, openOrders, acceptedOrders })
     } else {
       res.redirect('/auth')
@@ -69,9 +80,15 @@ router.get('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try {
-    await Orders.findByIdAndUpdate(req.params.id, {
-      driver: req.user._id
-    })
+    console.log('about to update', req.params.id)
+    let updatedOrder = await Orders.findByIdAndUpdate(
+      req.params.id,
+      {
+        driver: req.user._id
+      },
+      { new: true }
+    )
+    console.log({ updatedOrder })
     res.redirect('/orders')
   } catch (err) {
     next(err)
