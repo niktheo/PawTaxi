@@ -23,8 +23,8 @@ router.get('/create', (req, res) => {
 // })
 router.get('/:id', async (req, res) => {
   let order = await Orders.findById(req.params.id)
-    .lean()
     .populate('customer driver')
+    .lean()
   let time = order.date
   console.log(time)
   let finalDate = moment.utc(`${time}`).format('lll')
