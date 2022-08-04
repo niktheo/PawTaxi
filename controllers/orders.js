@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
   let finalDate = moment.utc(`${time}`).format('lll')
   //console.log(finalDate)
   order.date = finalDate
-  console.log(order.date)
+  //console.log(order.date)
   // console.log(order)
   res.render('./one', { user: req.user, order })
 })
@@ -61,7 +61,17 @@ router.get('/', async (req, res, next) => {
             driver: undefined
           }
         ]
-      }).populate('customer driver')  
+      })
+        .populate('customer driver')
+        .lean()
+
+      orders.forEach((elem, i) => {
+        finalDate = moment.utc(`${elem.date}`).format('lll')
+        console.log(finalDate)
+        elem.date = finalDate
+        console.log(elem.date)
+      })
+
       res.render('list', { user: req.user, orders })
     } else {
       res.redirect('/auth')
