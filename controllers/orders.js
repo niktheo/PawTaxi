@@ -80,9 +80,15 @@ router.get('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try {
-    await Orders.findByIdAndUpdate(req.params.id, {
-      driver: req.user._id
-    })
+    console.log('about to update', req.params.id)
+    let updatedOrder = await Orders.findByIdAndUpdate(
+      req.params.id,
+      {
+        driver: req.user._id
+      },
+      { new: true }
+    )
+    console.log({ updatedOrder })
     res.redirect('/orders')
   } catch (err) {
     next(err)
