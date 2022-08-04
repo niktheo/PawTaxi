@@ -52,27 +52,32 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated() && req.user.car) {
-      let orders = await Orders.find({
-        $or: [
-          {
-            driver: req.user._id
-          },
-          {
-            driver: undefined
-          }
-        ]
+      let openOrders = await Orders.find({
+        driver: undefined
+      })
+        .populate('customer')
+        .sort('-date')
+      let acceptedOrders = await Orders.find({
+        driver: req.user._id
       })
         .populate('customer driver')
-        .lean()
+        .sort('-date')
 
-      orders.forEach((elem, i) => {
+      openOrders.forEach((elem, i) => {
         finalDate = moment.utc(`${elem.date}`).format('lll')
-        console.log(finalDate)
+        //console.log(finalDate)
         elem.date = finalDate
-        console.log(elem.date)
+        //console.log(elem.date)
       })
 
-      res.render('list', { user: req.user, orders })
+      acceptedOrders.forEach((elem, i) => {
+        finalDate = moment.utc(`${elem.date}`).format('lll')
+        //console.log(finalDate)
+        elem.date = finalDate
+        //console.log(elem.date)
+      })
+
+      res.render('list', { user: req.user, openOrders, acceptedOrders })
     } else {
       res.redirect('/auth')
     }
