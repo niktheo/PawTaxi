@@ -1,9 +1,21 @@
-var myLatLng = { lat: 38.346, lng: -0.4907 }
-var mapOptions = {
-  center: myLatLng,
-  zoom: 7,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-}
+function initialize() {
+  const directionsService = new google.maps.DirectionsService()
+  const directionsDisplay = new google.maps.DirectionsRenderer({
+    suppressMarkers: true
+  })
+  var infowindow = new google.maps.InfoWindow()
+  // const mapOptions = {
+  //   zoom: 7,
+  //   center: new google.maps.LatLng(37.4419, -122.1419) // some coordinates
+  // }
+  const map = new google.maps.Map(document.getElementById('googleMapRoute'))
+  directionsDisplay.setMap(map)
+
+  const request = {
+    origin: document.getElementById('start').textContent,
+    destination: document.getElementById('end').textContent,
+    travelMode: 'DRIVING'
+  }
 
 //create map
 var map = new google.maps.Map(
